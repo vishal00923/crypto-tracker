@@ -5,7 +5,7 @@ export const useStyles = makeStyles(() => ({
         flex: 1,
         color: '#FFF89A',
         fontFamily: 'Poppins',
-        fontWeight: 600,
+        fontWeight: 500,
         cursor: 'pointer',
     },
 }));
