@@ -8,7 +8,7 @@ export const useStyles = makeStyles(() => ({
         height: '42vh',
         display: 'flex',
         flexDirection: 'column',
-        paddingTop: 24,
+        paddingTop: 16,
         justifyContent: 'space-around',
     },
     tagLine: {
@@ -17,6 +17,7 @@ export const useStyles = makeStyles(() => ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        marginBottom: 16,
         zIndex: 100,
     },
 }));
