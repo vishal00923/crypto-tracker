@@ -3,9 +3,9 @@ import { createTheme, makeStyles } from '@material-ui/core';
 export const useStyles = makeStyles(() => ({
     title: {
         flex: 1,
-        color: '#FFF89A',
+        color: '#FFE900',
         fontFamily: 'Poppins',
-        fontWeight: 500,
+        fontWeight: 600,
         cursor: 'pointer',
     },
 }));
