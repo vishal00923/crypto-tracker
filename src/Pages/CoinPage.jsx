@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { makeStyles, Typography } from '@material-ui/core';
+import { LinearProgress, makeStyles, Typography } from '@material-ui/core';
 import ReactHtmlParser from 'react-html-parser';
 import axios from 'axios';
 
@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CoinPage = ({ symbol, currency }) => {
-  const [coin, setCoin] = useState({});
+  const [coin, setCoin] = useState();
   const { id } = useParams();
 
   const classes = useStyles();
@@ -75,17 +75,22 @@ const CoinPage = ({ symbol, currency }) => {
 
   useEffect(() => {
     // Fetch Coin
+    const url = `https://api.coingecko.com/api/v3/coins/${id}`;
+
     const fetchCoin = async () => {
-      const url = `https://api.coingecko.com/api/v3/coins/${id}`;
       const { data } = await axios.get(url);
 
       setCoin(data);
     };
 
     fetchCoin();
-  });
+  }, [id]);
 
-  console.log(coin);
+  //   console.log(coin);
+
+  if (!coin) {
+    return <LinearProgress style={{ backgroundColor: '#ffe900' }} />;
+  }
 
   return (
     <div className={classes.container}>
@@ -117,7 +122,6 @@ const CoinPage = ({ symbol, currency }) => {
               style={{
                 fontFamily: 'Poppins',
                 fontSize: '1.575rem',
-                transform: 'translateY(9.25%)',
               }}
             >
               {coin.market_cap_rank}
@@ -129,7 +133,7 @@ const CoinPage = ({ symbol, currency }) => {
               component="p"
               style={{
                 fontFamily: 'Poppins',
-                fontSize: '1.925rem',
+                fontSize: 25,
                 fontWeight: 600,
                 marginRight: '1.125rem',
               }}
@@ -142,7 +146,6 @@ const CoinPage = ({ symbol, currency }) => {
               style={{
                 fontFamily: 'Poppins',
                 fontSize: '1.575rem',
-                transform: 'translateY(9.25%)',
               }}
             >
               {symbol}{' '}
@@ -157,7 +160,7 @@ const CoinPage = ({ symbol, currency }) => {
               component="p"
               style={{
                 fontFamily: 'Poppins',
-                fontSize: '1.925rem',
+                fontSize: 25,
                 fontWeight: 600,
                 marginRight: '1.125rem',
               }}
@@ -169,8 +172,7 @@ const CoinPage = ({ symbol, currency }) => {
               component="p"
               style={{
                 fontFamily: 'Poppins',
-                fontSize: '1.575rem',
-                transform: 'translateY(9.25%)',
+                fontSize: 25,
               }}
             >
               {symbol}{' '}
@@ -186,7 +188,7 @@ const CoinPage = ({ symbol, currency }) => {
       </div>
 
       {/* Chart JS */}
-      <CoinChart coin={coin} />
+      <CoinChart coin={coin} currency={currency} />
     </div>
   );
 };

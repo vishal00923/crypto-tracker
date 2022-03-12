@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CircularProgress, ThemeProvider } from '@material-ui/core';
 import { Line } from 'react-chartjs-2';
-
 import { useStyles, darkTheme } from './styles';
 
 const CoinChart = ({ coin, currency }) => {
@@ -53,13 +52,6 @@ const CoinChart = ({ coin, currency }) => {
                     borderColor: '#eebc1d',
                   },
                 ],
-              }}
-              options={{
-                elements: {
-                  point: {
-                    radius: 1,
-                  },
-                },
               }}
             />
           </>
