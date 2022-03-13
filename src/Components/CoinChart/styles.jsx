@@ -16,11 +16,6 @@ export const useStyles = makeStyles((theme) => ({
       paddingTop: 0,
     },
   },
-  circularProgress: {
-    size: 250,
-    thickness: 1,
-    color: '#ffe900',
-  },
 }));
 
 export const darkTheme = createTheme({

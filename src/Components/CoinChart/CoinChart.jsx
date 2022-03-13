@@ -27,8 +27,12 @@ const CoinChart = ({ coin, currency }) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <div className={classes.container}>
-        {!historicalData ? (
-          <CircularProgress className={classes.circularProgress} />
+        {!historicalData.length ? (
+          <CircularProgress
+            style={{ color: '#ffe900' }}
+            size={250}
+            thickness={2.5}
+          />
         ) : (
           <>
             <Line
