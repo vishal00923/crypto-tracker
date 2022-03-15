@@ -1,6 +1,6 @@
 import { makeStyles, createTheme } from '@material-ui/core';
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
@@ -8,10 +8,14 @@ export const useStyles = makeStyles(() => ({
     marginTop: '1.375rem',
   },
   tableTitle: {
+    textAlign: 'center',
     fontFamily: 'Poppins',
     fontSize: '1.925rem',
     textTransform: 'capitalize',
     marginBottom: '1.125rem',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: 22.5,
+    },
   },
   textField: {
     width: '100%',

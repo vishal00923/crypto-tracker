@@ -13,6 +13,7 @@ const Banner = ({ currency, symbol }) => {
       <Container className={classes.bannerContent}>
         <div className={classes.tagLine}>
           <Typography
+            className={classes.bannerTitle}
             style={{ fontFamily: 'Poppins', fontWeight: 600, marginBottom: 8 }}
             variant="h2"
             color="initial"
@@ -21,6 +22,7 @@ const Banner = ({ currency, symbol }) => {
             Crypto Tracker
           </Typography>
           <Typography
+            className={classes.bannerText}
             style={{
               fontFamily: 'Poppins',
               textTransform: 'capitalize',

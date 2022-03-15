@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles((theme) => ({
   banner: {
     backgroundImage: `url(./banner.jpg)`,
   },
@@ -19,5 +19,15 @@ export const useStyles = makeStyles(() => ({
     justifyContent: 'center',
     marginBottom: 16,
     zIndex: 100,
+  },
+  bannerTitle: {
+    [theme.breakpoints.down('xs')]: {
+      fontSize: 24,
+    },
+  },
+  bannerText: {
+    [theme.breakpoints.down('xs')]: {
+      fontSize: 16,
+    },
   },
 }));

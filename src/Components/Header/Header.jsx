@@ -47,13 +47,9 @@ const Header = ({ currency, setCurrency, setSymbol }) => {
             </Typography>
 
             <Select
+              className={classes.boxSelect}
               onChange={handleChange}
               variant="outlined"
-              style={{
-                width: 116,
-                height: 34,
-                marginRight: 12,
-              }}
               value={currency}
             >
               <MenuItem value={'USD'}>USD</MenuItem>

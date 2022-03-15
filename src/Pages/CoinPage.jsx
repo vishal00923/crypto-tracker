@@ -31,12 +31,18 @@ const useStyles = makeStyles((theme) => ({
   img: {
     height: 200,
     marginBottom: 12,
+    [theme.breakpoints.down('xs')]: {
+      height: 150,
+    },
   },
   title: {
     fontFamily: 'Poppins',
     fontSize: '3.125rem',
     fontWeight: '600',
     marginBottom: 12,
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.875rem',
+    },
   },
   description: {
     width: '100%',
@@ -61,6 +67,53 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('xs')]: {
       alignItems: 'start',
+    },
+  },
+  rank: {
+    fontFamily: 'Poppins',
+    fontSize: '1.925rem',
+    fontWeight: 600,
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.375rem',
+    },
+  },
+  rankVal: {
+    fontFamily: 'Poppins',
+    fontSize: '1.575rem',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.275rem',
+    },
+  },
+  currentPrice: {
+    fontFamily: 'Poppins',
+    fontSize: '1.925rem',
+    fontWeight: 600,
+    marginRight: '1.125rem',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.375rem',
+    },
+  },
+  currentPriceVal: {
+    fontFamily: 'Poppins',
+    fontSize: '1.575rem',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.275rem',
+    },
+  },
+  marketCap: {
+    fontFamily: 'Poppins',
+    fontSize: '1.925rem',
+    fontWeight: 600,
+    marginRight: '1.125rem',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.375rem',
+    },
+  },
+  marketCapVal: {
+    fontFamily: 'Poppins',
+    fontSize: '1.575rem',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1.275rem',
     },
   },
 }));
@@ -105,48 +158,25 @@ const CoinPage = ({ symbol, currency }) => {
 
         <div className={classes.marketData}>
           <span style={{ display: 'flex', marginBottom: '1.215rem' }}>
-            <Typography
-              variant="h4"
-              component="p"
-              style={{
-                fontFamily: 'Poppins',
-                fontSize: '1.925rem',
-                fontWeight: 600,
-              }}
-            >
+            <Typography className={classes.rank} variant="h4" component="p">
               Rank: &nbsp;
             </Typography>
-            <Typography
-              variant="h5"
-              component="p"
-              style={{
-                fontFamily: 'Poppins',
-                fontSize: '1.575rem',
-              }}
-            >
+            <Typography className={classes.rankVal} variant="h5" component="p">
               {coin.market_cap_rank}
             </Typography>
           </span>
           <span style={{ display: 'flex', marginBottom: '1.215rem' }}>
             <Typography
+              className={classes.currentPrice}
               variant="h4"
               component="p"
-              style={{
-                fontFamily: 'Poppins',
-                fontSize: 25,
-                fontWeight: 600,
-                marginRight: '1.125rem',
-              }}
             >
               Currenct Price:
             </Typography>
             <Typography
+              className={classes.currentPriceVal}
               variant="h5"
               component="p"
-              style={{
-                fontFamily: 'Poppins',
-                fontSize: '1.575rem',
-              }}
             >
               {symbol}{' '}
               {numberWithCommas(
@@ -156,24 +186,16 @@ const CoinPage = ({ symbol, currency }) => {
           </span>
           <span style={{ display: 'flex' }}>
             <Typography
+              className={classes.marketCap}
               variant="h4"
               component="p"
-              style={{
-                fontFamily: 'Poppins',
-                fontSize: 25,
-                fontWeight: 600,
-                marginRight: '1.125rem',
-              }}
             >
               Market Cap:
             </Typography>
             <Typography
+              className={classes.marketCapVal}
               variant="h5"
               component="p"
-              style={{
-                fontFamily: 'Poppins',
-                fontSize: 25,
-              }}
             >
               {symbol}{' '}
               {numberWithCommas(

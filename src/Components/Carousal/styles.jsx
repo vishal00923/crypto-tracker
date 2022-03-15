@@ -21,12 +21,12 @@ export const useStyles = makeStyles(() => ({
 // For Responsive Carousal
 export const responsive = {
   0: {
-    items: 1,
+    items: 2,
   },
   512: {
-    items: 3,
+    items: 4,
   },
   1200: {
-    items: 5,
+    items: 6,
   },
 };
