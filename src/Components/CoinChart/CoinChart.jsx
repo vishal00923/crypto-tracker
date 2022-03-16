@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CircularProgress, ThemeProvider } from '@material-ui/core';
 import { Line } from 'react-chartjs-2';
+
+import SelectButton from '../SelectButton/SelectButton';
+
 import { useStyles, darkTheme } from './styles';
+import { chartData } from '../../util';
 
 const CoinChart = ({ coin, currency }) => {
   const [days, setDays] = useState(1);
@@ -23,6 +27,8 @@ const CoinChart = ({ coin, currency }) => {
 
     fetchHistoricalChart();
   }, [id, currency, days]);
+
+  // console.log(chartData);
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -58,6 +64,17 @@ const CoinChart = ({ coin, currency }) => {
                 ],
               }}
             />
+            <div className={classes.buttonContainer}>
+              {chartData.map((item) => (
+                <SelectButton
+                  key={item.label}
+                  label={item.label}
+                  selected={item.value === days}
+                  value={item.value}
+                  setDays={setDays}
+                />
+              ))}
+            </div>
           </>
         )}
       </div>

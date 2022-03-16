@@ -16,6 +16,12 @@ export const useStyles = makeStyles((theme) => ({
       paddingTop: 0,
     },
   },
+  buttonContainer: {
+    width: '100%',
+    display: 'flex',
+    marginTop: 20,
+    justifyContent: 'space-around',
+  },
 }));
 
 export const darkTheme = createTheme({
