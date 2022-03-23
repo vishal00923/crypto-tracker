@@ -10,6 +10,8 @@ import {
   Toolbar,
 } from '@material-ui/core';
 
+import AuthModal from '../Authentication/AuthModal';
+
 import { useStyles, darkTheme } from './styles';
 
 const Header = ({ currency, setCurrency, setSymbol }) => {
@@ -55,6 +57,8 @@ const Header = ({ currency, setCurrency, setSymbol }) => {
               <MenuItem value={'USD'}>USD</MenuItem>
               <MenuItem value={'INR'}>INR</MenuItem>
             </Select>
+
+            <AuthModal />
           </Toolbar>
         </Container>
       </AppBar>

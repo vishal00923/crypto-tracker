@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.26.0",
     "chart.js": "^3.5.1",
+    "firebase": "^9.6.9",
     "react": "^17.0.2",
     "react-alice-carousel": "^2.5.1",
     "react-chartjs-2": "^3.0.4",

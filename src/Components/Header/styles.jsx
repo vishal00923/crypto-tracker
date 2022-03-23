@@ -12,12 +12,12 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   boxSelect: {
-    width: 100,
-    height: 30,
+    width: 85,
+    height: 40,
     marginRight: 10,
     [theme.breakpoints.down('xs')]: {
-      width: 85,
-      height: 28,
+      width: 80,
+      height: 30,
     },
   },
 }));
