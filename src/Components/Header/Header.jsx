@@ -10,7 +10,7 @@ import {
   Toolbar,
 } from '@material-ui/core';
 
-import AuthModal from '../Authentication/AuthModal';
+import AuthModal from '../Authentication/AuthModal/AuthModal';
 
 import { useStyles, darkTheme } from './styles';
 
