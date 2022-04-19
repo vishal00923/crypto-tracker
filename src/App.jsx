@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Header from './Components/Header/Header';
+import Alert from './Components/Alert/Alert';
 
 import HomePage from './Pages/HomePage';
 import CoinPage from './Pages/CoinPage';
@@ -12,6 +13,13 @@ const App = () => {
   const [currency, setCurrency] = useState('INR');
   const [symbol, setSymbol] = useState('₹');
 
+  // For Creating Alert Messages
+  const [alert, setAlert] = useState({
+    open: false,
+    msg: '',
+    type: 'success',
+  });
+
   const classes = useStyles();
 
   return (
@@ -20,6 +28,7 @@ const App = () => {
         currency={currency}
         setCurrency={setCurrency}
         setSymbol={setSymbol}
+        setAlert={setAlert}
       />
 
       <Routes>
@@ -32,6 +41,8 @@ const App = () => {
           element={<CoinPage symbol={symbol} currency={currency} />}
         />
       </Routes>
+
+      <Alert alert={alert} setAlert={setAlert} />
     </div>
   );
 };

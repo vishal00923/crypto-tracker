@@ -14,7 +14,7 @@ import SignUp from '../SignUp/SignUp';
 
 import { useStyles } from './styles';
 
-const AuthModal = () => {
+const AuthModal = ({ setAlert }) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(0);
 
@@ -72,7 +72,9 @@ const AuthModal = () => {
               </Tabs>
             </AppBar>
             {value === 0 && <Login handleClose={handleClose} />}
-            {value === 1 && <SignUp handleClose={handleClose} />}
+            {value === 1 && (
+              <SignUp handleClose={handleClose} setAlert={setAlert} />
+            )}
           </div>
         </Fade>
       </Modal>

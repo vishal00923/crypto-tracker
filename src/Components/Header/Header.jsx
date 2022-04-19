@@ -14,7 +14,7 @@ import AuthModal from '../Authentication/AuthModal/AuthModal';
 
 import { useStyles, darkTheme } from './styles';
 
-const Header = ({ currency, setCurrency, setSymbol }) => {
+const Header = ({ currency, setCurrency, setSymbol, setAlert }) => {
   const classes = useStyles();
   const navigate = useNavigate();
 
@@ -58,7 +58,7 @@ const Header = ({ currency, setCurrency, setSymbol }) => {
               <MenuItem value={'INR'}>INR</MenuItem>
             </Select>
 
-            <AuthModal />
+            <AuthModal setAlert={setAlert} />
           </Toolbar>
         </Container>
       </AppBar>
