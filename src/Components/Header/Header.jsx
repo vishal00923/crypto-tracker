@@ -60,7 +60,7 @@ const Header = ({ currency, setCurrency, setSymbol, setAlert, user }) => {
             </Select>
 
             {user ? (
-              <UserSideBar user={user} />
+              <UserSideBar user={user} setAlert={setAlert} />
             ) : (
               <AuthModal setAlert={setAlert} />
             )}

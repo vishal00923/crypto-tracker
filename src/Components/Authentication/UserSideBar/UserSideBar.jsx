@@ -4,7 +4,10 @@ import { Avatar, Button } from '@material-ui/core';
 
 import { useStyles } from './styles';
 
-const UserSideBar = ({ user }) => {
+import { signOut } from 'firebase/auth';
+import { auth } from '../../../firebase';
+
+const UserSideBar = ({ user, setAlert }) => {
   const [state, setState] = useState({ right: false });
 
   const classes = useStyles();
@@ -17,8 +20,13 @@ const UserSideBar = ({ user }) => {
     setState({ ...state, [anchor]: open });
   };
 
-  // logout functionality
-  const logout = () => {};
+  // Logout Functionality
+  const logout = () => {
+    signOut(auth);
+
+    setAlert({ open: true, type: 'success', msg: 'Logout Successful !' });
+    toggleDrawer();
+  };
 
   return (
     <div>

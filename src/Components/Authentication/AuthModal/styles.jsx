@@ -25,4 +25,11 @@ export const useStyles = makeStyles((theme) => ({
     color: '#fff',
     borderRadius: 4,
   },
+  google: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 20,
+    padding: 24,
+    paddingTop: 0,
+  },
 }));

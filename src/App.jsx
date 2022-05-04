@@ -58,7 +58,14 @@ const App = () => {
         />
         <Route
           path="/coins/:id"
-          element={<CoinPage symbol={symbol} currency={currency} />}
+          element={
+            <CoinPage
+              symbol={symbol}
+              currency={currency}
+              user={user}
+              setAlert={setAlert}
+            />
+          }
         />
       </Routes>
 

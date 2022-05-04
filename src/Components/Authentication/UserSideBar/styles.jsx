@@ -4,6 +4,7 @@ export const useStyles = makeStyles(() => ({
   avataar: {
     height: 40,
     widht: 40,
+    marginLeft: 3.5,
     cursor: 'pointer',
     backgroundColor: '#eebc1d',
   },
@@ -35,6 +36,19 @@ export const useStyles = makeStyles(() => ({
     fontSize: 20,
     textAlign: 'center',
     wordWrap: 'break-word',
+  },
+  watchList: {
+    width: '100%',
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 12,
+    padding: 12,
+    paddingTop: 12,
+    backgroundColor: 'grey',
+    borderRadius: 5,
+    overflowY: 'scroll',
   },
   logout: {
     width: '100%',

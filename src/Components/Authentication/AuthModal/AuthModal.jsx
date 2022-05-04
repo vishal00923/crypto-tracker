@@ -7,7 +7,11 @@ import {
   AppBar,
   Tabs,
   Tab,
+  Box,
 } from '@material-ui/core';
+import GoogleButton from 'react-google-button';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth } from '../../../firebase';
 
 import Login from '../Login/Login';
 import SignUp from '../SignUp/SignUp';
@@ -31,6 +35,29 @@ const AuthModal = ({ setAlert }) => {
 
   const handleChange = (e, newValue) => {
     setValue(newValue);
+  };
+
+  // Sing In With Google Functionality
+  const googleAuthProvider = new GoogleAuthProvider();
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, googleAuthProvider)
+      .then((res) => {
+        setAlert({
+          open: true,
+          type: 'success',
+          msg: `Sign Up Successful. Welcome ${res.user.email}`,
+        });
+
+        handleClose();
+      })
+      .catch((error) => {
+        setAlert({
+          open: true,
+          type: 'error',
+          msg: error.message,
+        });
+        return;
+      });
   };
 
   return (
@@ -77,6 +104,20 @@ const AuthModal = ({ setAlert }) => {
             {value === 1 && (
               <SignUp handleClose={handleClose} setAlert={setAlert} />
             )}
+
+            <Box className={classes.google}>
+              <GoogleButton
+                style={{
+                  width: '100%',
+                  outline: 'none',
+                  borderRadius: 3,
+                  fontFamily: 'Poppins',
+                  fontSize: 16,
+                  textAlign: 'center',
+                }}
+                onClick={signInWithGoogle}
+              />
+            </Box>
           </div>
         </Fade>
       </Modal>
