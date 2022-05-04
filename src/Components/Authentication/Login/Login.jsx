@@ -1,15 +1,45 @@
 import React, { useState } from 'react';
 import { Box, TextField, Button, Typography } from '@material-ui/core';
 
+import { auth } from '../../../firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+
 import { useStyles } from './styles';
 
-const Login = ({ handleClose }) => {
+const Login = ({ handleClose, setAlert }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const classes = useStyles();
 
-  const handleSubmit = () => {};
+  const handleSubmit = async () => {
+    if (!email || !password) {
+      setAlert({
+        open: true,
+        msg: 'Please fill all the details',
+        type: 'error',
+      });
+      return;
+    }
+
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+
+      setAlert({
+        open: true,
+        msg: `LogIn Successfull. Welcome ${result.user.email}`,
+      });
+
+      handleClose();
+    } catch (error) {
+      setAlert({
+        open: true,
+        msg: error.message,
+        type: 'error',
+      });
+      return;
+    }
+  };
 
   return (
     <Box p={3.2} className={classes.box}>

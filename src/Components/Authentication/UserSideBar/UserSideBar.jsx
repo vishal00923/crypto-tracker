@@ -45,7 +45,17 @@ const UserSideBar = ({ user }) => {
                 <span className={classes.spanText}>
                   {user.dispayName || user.email}
                 </span>
-                <div className={classes.watchList}></div>
+                <div className={classes.watchList}>
+                  <span
+                    style={{
+                      fontSize: 16,
+                      textShadow: '0 0 5px black',
+                      letterSpacing: '1.2px',
+                    }}
+                  >
+                    Watchlist
+                  </span>
+                </div>
               </div>
               <Button
                 className={classes.logout}

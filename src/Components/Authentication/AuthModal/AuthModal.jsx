@@ -71,7 +71,9 @@ const AuthModal = ({ setAlert }) => {
                 <Tab label="Sign Up" style={{ fontFamily: 'Poppins' }} />
               </Tabs>
             </AppBar>
-            {value === 0 && <Login handleClose={handleClose} />}
+            {value === 0 && (
+              <Login handleClose={handleClose} setAlert={setAlert} />
+            )}
             {value === 1 && (
               <SignUp handleClose={handleClose} setAlert={setAlert} />
             )}

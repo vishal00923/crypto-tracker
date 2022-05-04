@@ -11,10 +11,11 @@ import {
 } from '@material-ui/core';
 
 import AuthModal from '../Authentication/AuthModal/AuthModal';
+import UserSideBar from '../Authentication/UserSideBar/UserSideBar';
 
 import { useStyles, darkTheme } from './styles';
 
-const Header = ({ currency, setCurrency, setSymbol, setAlert }) => {
+const Header = ({ currency, setCurrency, setSymbol, setAlert, user }) => {
   const classes = useStyles();
   const navigate = useNavigate();
 
@@ -58,7 +59,11 @@ const Header = ({ currency, setCurrency, setSymbol, setAlert }) => {
               <MenuItem value={'INR'}>INR</MenuItem>
             </Select>
 
-            <AuthModal setAlert={setAlert} />
+            {user ? (
+              <UserSideBar user={user} />
+            ) : (
+              <AuthModal setAlert={setAlert} />
+            )}
           </Toolbar>
         </Container>
       </AppBar>
