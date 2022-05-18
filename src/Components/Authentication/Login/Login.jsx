@@ -67,7 +67,12 @@ const Login = ({ handleClose, setAlert }) => {
       >
         Login
       </Button>
-      <Typography variant="p" color="initial" className={classes.orText}>
+      <Typography
+        variant="h3"
+        component="p"
+        color="initial"
+        className={classes.orText}
+      >
         Or
       </Typography>
     </Box>
