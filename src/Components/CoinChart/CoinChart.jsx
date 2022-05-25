@@ -10,10 +10,12 @@ import { chartData } from '../../util';
 
 const CoinChart = ({ coin, currency }) => {
   const [days, setDays] = useState(1);
-  const [historicalData, setHistoricalData] = useState([]);
+  const [historicalData, setHistoricalData] = useState();
 
   const id = coin.id;
   const classes = useStyles();
+
+  // console.log(id);
 
   useEffect(() => {
     // Fetch Historical Chart Data
@@ -33,7 +35,7 @@ const CoinChart = ({ coin, currency }) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <div className={classes.container}>
-        {!historicalData.length ? (
+        {!historicalData ? (
           <CircularProgress
             style={{ color: '#ffe900' }}
             size={250}
@@ -63,6 +65,7 @@ const CoinChart = ({ coin, currency }) => {
                   },
                 ],
               }}
+              options={{ elements: { point: { radius: 1 } } }}
             />
             <div className={classes.buttonContainer}>
               {chartData.map((item) => (

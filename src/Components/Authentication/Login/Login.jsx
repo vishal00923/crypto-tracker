@@ -28,6 +28,7 @@ const Login = ({ handleClose, setAlert }) => {
       setAlert({
         open: true,
         msg: `LogIn Successfull. Welcome ${result.user.email}`,
+        type: 'success',
       });
 
       handleClose();

@@ -5,7 +5,7 @@ import Header from './Components/Header/Header';
 import Alert from './Components/Alert/Alert';
 
 import HomePage from './Pages/HomePage';
-import CoinPage from './Pages/CoinPage';
+import CoinPage from './Pages/CoinPage/CoinPage';
 
 import { auth } from '../src/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
