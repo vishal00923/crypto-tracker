@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Try It
 
-https://crypto-tracker-vishal00923.herokuapp.com/
+https://crypto-tracker-vishal00923.netlify.app/
 
 ## Install
 
