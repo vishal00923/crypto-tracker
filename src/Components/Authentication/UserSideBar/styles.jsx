@@ -57,4 +57,15 @@ export const useStyles = makeStyles(() => ({
     marginTop: 20,
     fontWeight: 'bold',
   },
+  coin: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 12,
+    color: '#000',
+    backgroundColor: '#eebc1d',
+    boxShadow: '2px 2px 3px #000',
+    borderRadius: 5,
+  },
 }));

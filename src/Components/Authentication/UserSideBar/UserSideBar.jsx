@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import Drawer from '@material-ui/core/Drawer';
 import { Avatar, Button } from '@material-ui/core';
+import { AiFillDelete } from 'react-icons/ai';
 
 import { useStyles } from './styles';
 
 import { signOut } from 'firebase/auth';
-import { auth } from '../../../firebase';
+import { auth, db } from '../../../firebase';
+import { doc, setDoc } from 'firebase/firestore';
 
-const UserSideBar = ({ user, setAlert }) => {
+import { numberWithCommas } from '../../../util';
+
+const UserSideBar = ({ user, setAlert, watchlist, coins, symbol }) => {
   const [state, setState] = useState({ right: false });
 
   const classes = useStyles();
@@ -28,10 +32,37 @@ const UserSideBar = ({ user, setAlert }) => {
     toggleDrawer();
   };
 
+  // Rmove From Watchlist
+  const removeFromWatchlist = async (coin) => {
+    const coinRef = doc(db, 'watchlist', user.uid);
+
+    try {
+      await setDoc(
+        coinRef,
+        {
+          coins: watchlist.filter((watch) => watch !== coin.id),
+        },
+        { marge: true }
+      );
+
+      setAlert({
+        open: true,
+        type: 'success',
+        msg: `${coin.name} Remove from the Watchlist`,
+      });
+    } catch (error) {
+      setAlert({
+        open: true,
+        type: 'error',
+        msg: error.message,
+      });
+    }
+  };
+
   return (
     <div>
       {['right'].map((anchor) => (
-        <React.Fragment key={anchor}>
+        <Fragment key={anchor}>
           <Avatar
             className={classes.avataar}
             src={user.photoURL}
@@ -63,6 +94,27 @@ const UserSideBar = ({ user, setAlert }) => {
                   >
                     Watchlist
                   </span>
+
+                  {coins.map((coin) => {
+                    if (watchlist.includes(coin.id)) {
+                      return (
+                        <div className={classes.coin} key={coin.id}>
+                          <span>{coin.name}</span>
+                          <span style={{ display: 'flex', gap: 12 }}>
+                            {symbol}
+                            {numberWithCommas(coin.current_price.toFixed(2))}
+                            <AiFillDelete
+                              style={{ cursor: 'pointer' }}
+                              fontSize="20"
+                              onClick={() => removeFromWatchlist(coin)}
+                            />
+                          </span>
+                        </div>
+                      );
+                    }
+
+                    return console.log();
+                  })}
                 </div>
               </div>
               <Button
@@ -74,7 +126,7 @@ const UserSideBar = ({ user, setAlert }) => {
               </Button>
             </div>
           </Drawer>
-        </React.Fragment>
+        </Fragment>
       ))}
     </div>
   );
