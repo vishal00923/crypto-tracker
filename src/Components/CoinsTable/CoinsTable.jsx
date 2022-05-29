@@ -20,8 +20,7 @@ import { Pagination } from '@material-ui/lab';
 import { useStyles, darkTheme } from './styles';
 import { numberWithCommas } from '../../util';
 
-const CoinsTable = ({ currency, symbol }) => {
-  const [coins, setCoins] = useState([]);
+const CoinsTable = ({ currency, symbol, coins, setCoins }) => {
   const [loading, setLoading] = useState(true);
   const [searchInput, setSearchInput] = useState('');
   const [page, setPage] = useState(1);
@@ -43,11 +42,10 @@ const CoinsTable = ({ currency, symbol }) => {
 
       setCoins([...data]);
       setLoading(false);
-      return;
     };
 
     fetchCoins();
-  }, [currency]);
+  }, [currency, setCoins]);
 
   // Searching Functionality
   const searchCoins = () => {
@@ -161,9 +159,11 @@ const CoinsTable = ({ currency, symbol }) => {
                           style={{
                             textAlign: 'center',
                           }}
-                        >{`${symbol} ${numberWithCommas(
-                          coin.current_price.toFixed(2)
-                        )}`}</TableCell>
+                        >
+                          {`${symbol} ${numberWithCommas(
+                            coin.current_price.toFixed(2)
+                          )}`}
+                        </TableCell>
                         <TableCell
                           style={{
                             textAlign: 'center',

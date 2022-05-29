@@ -16,6 +16,8 @@ const App = () => {
   const [currency, setCurrency] = useState('INR');
   const [symbol, setSymbol] = useState('₹');
   const [user, setUser] = useState(null);
+  const [watchlist, setWatchlist] = useState([]);
+  const [coins, setCoins] = useState([]);
 
   // For Creating Alert Messages
   const [alert, setAlert] = useState({
@@ -35,22 +37,32 @@ const App = () => {
         setUser(null);
       }
     });
-  }, []);
+  }, [user]);
 
   return (
     <div className={classes.app}>
       <Header
         currency={currency}
         setCurrency={setCurrency}
+        symbol={symbol}
         setSymbol={setSymbol}
         setAlert={setAlert}
         user={user}
+        watchlist={watchlist}
+        coins={coins}
       />
 
       <Routes>
         <Route
           path="/"
-          element={<HomePage currency={currency} symbol={symbol} />}
+          element={
+            <HomePage
+              currency={currency}
+              symbol={symbol}
+              coins={coins}
+              setCoins={setCoins}
+            />
+          }
         />
         <Route
           path="/coins/:id"
@@ -60,6 +72,8 @@ const App = () => {
               currency={currency}
               user={user}
               setAlert={setAlert}
+              watchlist={watchlist}
+              setWatchlist={setWatchlist}
             />
           }
         />

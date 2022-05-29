@@ -13,9 +13,15 @@ import { numberWithCommas } from '../../util';
 
 import { useStyles } from './styles';
 
-const CoinPage = ({ symbol, currency, user, setAlert }) => {
+const CoinPage = ({
+  symbol,
+  currency,
+  user,
+  setAlert,
+  watchlist,
+  setWatchlist,
+}) => {
   const [coin, setCoin] = useState();
-  const [watchlist, setWatchlist] = useState([]);
 
   const { id } = useParams();
 
@@ -39,7 +45,7 @@ const CoinPage = ({ symbol, currency, user, setAlert }) => {
     if (user) {
       const coinRef = doc(db, 'watchlist', user.uid);
 
-      const unsubscribe = onSnapshot(coinRef, (coin) => {
+      var unsubscribe = onSnapshot(coinRef, (coin) => {
         if (coin.exists()) {
           setWatchlist(coin.data().coins);
         } else {

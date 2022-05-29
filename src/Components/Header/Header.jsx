@@ -15,7 +15,16 @@ import UserSideBar from '../Authentication/UserSideBar/UserSideBar';
 
 import { useStyles, darkTheme } from './styles';
 
-const Header = ({ currency, setCurrency, setSymbol, setAlert, user }) => {
+const Header = ({
+  currency,
+  setCurrency,
+  symbol,
+  setSymbol,
+  setAlert,
+  user,
+  watchlist,
+  coins,
+}) => {
   const classes = useStyles();
   const navigate = useNavigate();
 
@@ -60,7 +69,13 @@ const Header = ({ currency, setCurrency, setSymbol, setAlert, user }) => {
             </Select>
 
             {user ? (
-              <UserSideBar user={user} setAlert={setAlert} />
+              <UserSideBar
+                user={user}
+                setAlert={setAlert}
+                watchlist={watchlist}
+                coins={coins}
+                symbol={symbol}
+              />
             ) : (
               <AuthModal setAlert={setAlert} />
             )}

@@ -25,12 +25,9 @@ const CoinChart = ({ coin, currency }) => {
       );
 
       setHistoricalData(data.prices);
-      return;
     };
 
     fetchHistoricalChart();
-
-    return () => {};
   }, [id, currency, days]);
 
   // console.log(chartData);

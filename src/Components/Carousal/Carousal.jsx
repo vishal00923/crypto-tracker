@@ -18,7 +18,6 @@ const Carousal = ({ currency, symbol }) => {
       );
 
       setTrendingCoins([...data]);
-      return;
     };
 
     fetchTrendingCoins();
