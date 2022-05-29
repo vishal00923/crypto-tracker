@@ -23,12 +23,13 @@ const CoinPage = ({ symbol, currency, user, setAlert }) => {
 
   useEffect(() => {
     // Fetch Coin
-    const url = `https://api.coingecko.com/api/v3/coins/${id}`;
-
     const fetchCoin = async () => {
-      const { data } = await axios.get(url);
+      const { data } = await axios.get(
+        `https://api.coingecko.com/api/v3/coins/${id}`
+      );
 
       setCoin(data);
+      return;
     };
 
     fetchCoin();
@@ -75,7 +76,7 @@ const CoinPage = ({ symbol, currency, user, setAlert }) => {
       setAlert({
         open: true,
         type: 'success',
-        msg: `${coin.name} Added to the Watchlist !`,
+        msg: `${coin.name} Added to the Watchlist`,
       });
     } catch (error) {
       setAlert({
@@ -102,7 +103,7 @@ const CoinPage = ({ symbol, currency, user, setAlert }) => {
       setAlert({
         open: true,
         type: 'success',
-        msg: `${coin.name} Remove from the Watchlist !`,
+        msg: `${coin.name} Remove from the Watchlist`,
       });
     } catch (error) {
       setAlert({

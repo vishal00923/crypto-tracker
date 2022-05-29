@@ -19,15 +19,18 @@ const CoinChart = ({ coin, currency }) => {
 
   useEffect(() => {
     // Fetch Historical Chart Data
-    const url = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=${days}`;
-
     const fetchHistoricalChart = async () => {
-      const { data } = await axios.get(url);
+      const { data } = await axios.get(
+        `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=${days}`
+      );
 
       setHistoricalData(data.prices);
+      return;
     };
 
     fetchHistoricalChart();
+
+    return () => {};
   }, [id, currency, days]);
 
   // console.log(chartData);

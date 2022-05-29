@@ -24,7 +24,7 @@ const UserSideBar = ({ user, setAlert }) => {
   const logout = () => {
     signOut(auth);
 
-    setAlert({ open: true, type: 'success', msg: 'Logout Successful !' });
+    setAlert({ open: true, type: 'success', msg: 'Logout Successful' });
     toggleDrawer();
   };
 

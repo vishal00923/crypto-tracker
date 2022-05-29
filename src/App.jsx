@@ -28,18 +28,14 @@ const App = () => {
 
   // User Existence
   useEffect(() => {
-    onAuthStateChanged(
-      auth,
-      (user) => {
-        if (user) {
-          setUser(user);
-        } else {
-          setUser(null);
-        }
-      },
-      []
-    );
-  });
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
+  }, []);
 
   return (
     <div className={classes.app}>

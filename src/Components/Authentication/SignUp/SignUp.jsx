@@ -29,7 +29,7 @@ const SignUp = ({ handleClose, setAlert }) => {
         password
       );
 
-      console.log(result);
+      // console.log(result);
 
       setAlert({
         open: true,
