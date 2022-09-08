@@ -18,7 +18,7 @@ import {
 import { Pagination } from '@material-ui/lab';
 
 import { useStyles, darkTheme } from './styles';
-import { numberWithCommas } from '../../util';
+import { numberWithCommas, coinsList } from '../../util';
 
 const CoinsTable = ({ currency, symbol, coins, setCoins }) => {
   const [loading, setLoading] = useState(true);
@@ -36,12 +36,11 @@ const CoinsTable = ({ currency, symbol, coins, setCoins }) => {
   useEffect(() => {
     // Fetch Coins
     const fetchCoins = async () => {
-      const { data } = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=100&page=1&sparkline=false`
-      );
+      const { data } = await axios.get(coinsList(currency));
 
-      setCoins([...data]);
+      setCoins(data);
       setLoading(false);
+      return data;
     };
 
     fetchCoins();

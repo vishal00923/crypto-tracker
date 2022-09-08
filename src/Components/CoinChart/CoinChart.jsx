@@ -8,6 +8,8 @@ import SelectButton from '../SelectButton/SelectButton';
 import { useStyles, darkTheme } from './styles';
 import { chartData } from '../../util';
 
+import { historicalCharData } from '../../util';
+
 const CoinChart = ({ coin, currency }) => {
   const [days, setDays] = useState(1);
   const [historicalData, setHistoricalData] = useState();
@@ -20,15 +22,13 @@ const CoinChart = ({ coin, currency }) => {
   useEffect(() => {
     // Fetch Historical Chart Data
     const fetchHistoricalChart = async () => {
-      const { data } = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=${days}`
-      );
-
+      const { data } = await axios.get(historicalCharData(id, days, currency));
       setHistoricalData(data.prices);
+      return data;
     };
 
     fetchHistoricalChart();
-  }, [id, currency, days]);
+  }, [id, days, currency]);
 
   // console.log(chartData);
 

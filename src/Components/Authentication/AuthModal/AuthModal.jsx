@@ -48,7 +48,6 @@ const AuthModal = ({ setAlert }) => {
           type: 'success',
           msg: `Sign Up Successful. Welcome ${res.user.email}`,
         });
-
         handleClose();
       })
       .catch((error) => {
@@ -57,7 +56,6 @@ const AuthModal = ({ setAlert }) => {
           type: 'error',
           msg: error.message,
         });
-        return;
       });
   };
 

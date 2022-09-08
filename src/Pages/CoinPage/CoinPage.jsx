@@ -9,7 +9,7 @@ import { db } from '../../firebase';
 
 import CoinChart from '../../Components/CoinChart/CoinChart';
 
-import { numberWithCommas } from '../../util';
+import { numberWithCommas, singleCoin } from '../../util';
 
 import { useStyles } from './styles';
 
@@ -30,12 +30,10 @@ const CoinPage = ({
   useEffect(() => {
     // Fetch Coin
     const fetchCoin = async () => {
-      const { data } = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/${id}`
-      );
+      const { data } = await axios.get(singleCoin(id));
 
       setCoin(data);
-      return;
+      return data;
     };
 
     fetchCoin();
