@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
+import { CoinProvider } from './contexts/coinContext';
+import { CoinsProvider } from './contexts/coinsContext';
 import { CurrencyProvider } from './contexts/currencyContext';
 
 import App from './App';
@@ -11,11 +13,15 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
-  <React.StrictMode>
+  <Fragment>
     <BrowserRouter>
-      <CurrencyProvider>
-        <App />
-      </CurrencyProvider>
+      <CoinProvider>
+        <CoinsProvider>
+          <CurrencyProvider>
+            <App />
+          </CurrencyProvider>
+        </CoinsProvider>
+      </CoinProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  </Fragment>
 );

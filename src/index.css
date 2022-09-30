@@ -3,10 +3,43 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #1b1a22;
+}
+
 a {
+  color: #eebc1d;
   text-decoration: none;
 }
 
 li {
   list-style: none;
+}
+
+table {
+  border-collapse: separate !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 4px #1b1a22;
+  background: #1b1a22;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #eebc1d;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #eebc1d;
 }
