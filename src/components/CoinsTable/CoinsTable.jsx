@@ -81,7 +81,7 @@ export default function CoinsTable() {
 
         <TableContainer component={Paper}>
           {coins.length === 0 ? (
-            <LinearProgress sx={{ backgroundColor: '#EEBC1D' }} />
+            <LinearProgress sx={{ backgroundColor: '#EEBC1D', height: 2 }} />
           ) : (
             <Table sx={sxStyles.table} aria-label="coins table">
               <TableHead sx={{ backgroundColor: '#EEBC1D' }}>

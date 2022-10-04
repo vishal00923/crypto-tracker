@@ -13,19 +13,26 @@ import {
   ThemeProvider,
 } from '@mui/material';
 
+import { UserContext } from '../../contexts/userContext';
 import { CurrencyContext } from '../../contexts/currencyContext';
 
-import { sxStyles, StyledButton } from './Header.styles';
+import { sxStyles } from './Header.styles';
 import { theme } from '../../App.styles';
+
+import Auth from '../Auth/Auth';
+import Sidebar from '../Sidebar/Sidebar';
+import { currencyTable } from '../../utils/helper';
 
 export default function Header() {
   const { currency, setCurrency, setCurrencySymbol } =
     useContext(CurrencyContext);
+  const { currentUser } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { value } = e.target;
-    const currencyValue = value === 'INR' ? '₹' : '$';
+    const currencyValue = currencyTable[value];
 
     setCurrency(value);
     setCurrencySymbol(currencyValue);
@@ -42,7 +49,7 @@ export default function Header() {
           <Box>
             <Typography
               onClick={handleNavigate}
-              sx={{ color: '#FFD700', fontWeight: '700', cursor: 'pointer' }}
+              sx={sxStyles.logo}
               variant="h6"
               component="h2"
             >
@@ -50,27 +57,24 @@ export default function Header() {
             </Typography>
           </Box>
 
-          <Box
-            sx={{
-              padding: '16px 0',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '24px',
-            }}
-          >
-            <FormControl sx={{ minWidth: 120 }}>
-              <InputLabel>Currency</InputLabel>
+          <Box sx={sxStyles.formControlContainer}>
+            <FormControl sx={sxStyles.formControl}>
+              <InputLabel>{currency}</InputLabel>
               <Select
+                onChange={handleChange}
                 sx={{ height: 42 }}
                 value={currency}
-                label="Currency"
-                onChange={handleChange}
+                label={currency}
               >
-                <MenuItem value="USD">USD</MenuItem>
-                <MenuItem value="INR">INR</MenuItem>
+                {Object.keys(currencyTable).map((key) => (
+                  <MenuItem key={key} value={`${key}`}>
+                    {key}
+                  </MenuItem>
+                ))}
               </Select>
             </FormControl>
-            <StyledButton variant="contained">login</StyledButton>
+
+            {currentUser ? <Sidebar /> : <Auth />}
           </Box>
         </Container>
       </AppBar>

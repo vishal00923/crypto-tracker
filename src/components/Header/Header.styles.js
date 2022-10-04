@@ -1,5 +1,3 @@
-import { styled, Button } from '@mui/material';
-
 export const sxStyles = {
   appBar: {
     backgroundColor: '#05040C',
@@ -11,16 +9,21 @@ export const sxStyles = {
     alignItems: 'center',
     zIndex: 100,
   },
-};
 
-export const StyledButton = styled(Button)({
-  fontWeight: '600',
-  color: '#000',
-  minWidth: 100,
-  backgroundColor: '#EEBC1D',
-  padding: '8px 0',
-  outline: 'none',
-  '&:hover': {
-    backgroundColor: '#EEBC1D',
+  logo: {
+    color: '#FFD700',
+    fontWeight: '900',
+    cursor: 'pointer',
   },
-});
+
+  formControlContainer: {
+    padding: '16px 0',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '24px',
+  },
+
+  formControl: {
+    minWidth: 120,
+  },
+};
