@@ -11,7 +11,9 @@ import {
 import { sxStyles } from './Auth.styles';
 import { GoogleButton } from 'react-google-button';
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { UserContext } from '../../contexts/userContext';
+import { signInWithGoogle } from '../../utils/firebase';
 
 import Login from '../Login/Login';
 import SignUp from '../SignUp/SignUp';
@@ -19,6 +21,8 @@ import SignUp from '../SignUp/SignUp';
 export default function Auth() {
   const [tabValue, setTabValue] = useState(0);
   const [modalStatus, setModalStatus] = useState(false);
+
+  const { setNotifications } = useContext(UserContext);
 
   const handleTabChange = (_, newValue) => {
     setTabValue(newValue);
@@ -30,6 +34,24 @@ export default function Auth() {
 
   const handleModalOpen = () => {
     setModalStatus(true);
+  };
+
+  const handleGoogleLogin = async () => {
+    try {
+      const { user } = await signInWithGoogle();
+
+      setNotifications({
+        open: true,
+        type: 'success',
+        message: 'Welcome ' + (user.displayName || user.email),
+      });
+    } catch (error) {
+      setNotifications({
+        open: true,
+        type: 'error',
+        message: error.message,
+      });
+    }
   };
 
   return (
@@ -64,7 +86,10 @@ export default function Auth() {
             {tabValue ? <SignUp /> : <Login />}
 
             <Box sx={sxStyles.googleBtnBox}>
-              <GoogleButton style={sxStyles.googleBtn} />
+              <GoogleButton
+                onClick={handleGoogleLogin}
+                style={sxStyles.googleBtn}
+              />
             </Box>
           </Paper>
         </Fade>
