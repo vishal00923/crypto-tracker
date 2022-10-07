@@ -87,7 +87,7 @@ export default function Carousal() {
         autoPlayDirection
         autoPlayInterval={100}
         responsive={responsive}
-        animationDuration={1000}
+        animationDuration={2000}
         disableDotsControls={true}
         disableButtonsControls={true}
         items={items}
