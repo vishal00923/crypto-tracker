@@ -1,19 +1,79 @@
 import { useContext } from 'react';
 import { CoinContext } from '../../contexts/coinContext';
+import { UserContext } from '../../contexts/userContext';
 import { CurrencyContext } from '../../contexts/currencyContext';
 
 import { Box } from '@mui/system';
-import { Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 
 import ReactHtmlParser from 'react-html-parser';
 import { numberWithCommas } from '../../utils/helper';
+
+import { db } from '../../utils/firebase';
+import { doc, setDoc } from 'firebase/firestore';
 
 import { sxStyles } from './CoinDetails.styles';
 
 export default function CoinDetails() {
   const { coin } = useContext(CoinContext);
+  const { currentUser, setNotifications, watchlist } = useContext(UserContext);
   const { currency, currencySymbol } = useContext(CurrencyContext);
-  const { image, name, description, market_cap_rank, market_data } = coin;
+
+  const { id, image, name, description, market_cap_rank, market_data } = coin;
+
+  const isCoinInWatchlist = watchlist.includes(id);
+
+  const handleAddToWatchList = async () => {
+    const coinDocRef = doc(db, 'watchlist', currentUser.uid);
+
+    try {
+      await setDoc(
+        coinDocRef,
+        {
+          coins: watchlist ? [...watchlist, id] : [id],
+        },
+        { marge: true }
+      );
+
+      setNotifications({
+        open: true,
+        type: 'success',
+        message: `${name} added to watchlist`,
+      });
+    } catch (e) {
+      setNotifications({
+        open: true,
+        type: 'error',
+        message: e.message,
+      });
+    }
+  };
+
+  const handleRemoveFromWatchlist = async () => {
+    const coinDocRef = doc(db, 'watchlist', currentUser.uid);
+
+    try {
+      await setDoc(
+        coinDocRef,
+        {
+          coins: watchlist.filter((coinId) => coinId !== id),
+        },
+        { marge: true }
+      );
+
+      setNotifications({
+        open: true,
+        type: 'success',
+        message: `${name} removed from watchlist`,
+      });
+    } catch (e) {
+      setNotifications({
+        open: true,
+        type: 'error',
+        message: e.message,
+      });
+    }
+  };
 
   return (
     <Box sx={sxStyles.containerBox}>
@@ -37,11 +97,11 @@ export default function CoinDetails() {
       <Box sx={sxStyles.box3}>
         <Box sx={sxStyles.boxItem}>
           <Typography sx={sxStyles.coinSubTitle} variant="h4" component="h3">
-            Rank:
+            Rank :-
           </Typography>
           <Typography
             sx={sxStyles.coinSubTitleValue}
-            variant="h4"
+            variant="h6"
             component="p"
           >
             {market_cap_rank}
@@ -50,11 +110,11 @@ export default function CoinDetails() {
 
         <Box sx={sxStyles.boxItem}>
           <Typography sx={sxStyles.coinSubTitle} variant="h4" component="h3">
-            Current Price:
+            Current Price :-
           </Typography>
           <Typography
             sx={sxStyles.coinSubTitleValue}
-            variant="h4"
+            variant="h6"
             component="p"
           >
             {currencySymbol +
@@ -67,11 +127,11 @@ export default function CoinDetails() {
 
         <Box sx={sxStyles.boxItem}>
           <Typography sx={sxStyles.coinSubTitle} variant="h4" component="h3">
-            Market Cap:
+            Market Cap :-
           </Typography>
           <Typography
             sx={sxStyles.coinSubTitleValue}
-            variant="h4"
+            variant="h6"
             component="p"
           >
             {currencySymbol +
@@ -82,6 +142,28 @@ export default function CoinDetails() {
               'M'}
           </Typography>
         </Box>
+
+        {currentUser && (
+          <Box sx={sxStyles.addToWatchListBtnBox}>
+            <Button
+              onClick={
+                isCoinInWatchlist
+                  ? handleRemoveFromWatchlist
+                  : handleAddToWatchList
+              }
+              sx={{
+                ...sxStyles.addToWatchListBtn,
+                color: isCoinInWatchlist ? '#fff' : '#000',
+                backgroundColor: isCoinInWatchlist ? '#ff0000' : '#EEBC1D',
+                '&:hover': {
+                  backgroundColor: isCoinInWatchlist ? '#ff0000' : '#EEBC1D',
+                },
+              }}
+            >
+              {isCoinInWatchlist ? 'remove from watchlist' : 'add to watchlist'}
+            </Button>
+          </Box>
+        )}
       </Box>
     </Box>
   );

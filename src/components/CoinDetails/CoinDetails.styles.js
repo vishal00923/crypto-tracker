@@ -1,8 +1,13 @@
 export const sxStyles = {
   containerBox: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '32px',
     color: '#fff',
-    width: '30%',
-    paddingRight: '16px',
+    width: '40%',
+    paddingLeft: '16px',
+    paddingRight: '24px',
+    marginTop: '48px',
     borderRight: '2px solid gray',
   },
 
@@ -10,17 +15,17 @@ export const sxStyles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    marginTop: '24px',
-    marginBottom: '24px',
+    marginTop: '16px',
   },
 
   box2: {
     marginLeft: '24px',
-    marginBottom: '24px',
+    marginRight: '24px',
   },
 
   box3: {
     marginLeft: '24px',
+    marginRight: '24px',
     display: 'flex',
     flexDirection: 'column',
     gap: '16px',
@@ -29,22 +34,34 @@ export const sxStyles = {
   boxItem: {
     display: 'flex',
     alignItems: 'center',
-    gap: '12px',
+    justifyContent: 'space-between',
   },
 
   coinDescription: {
-    fontSize: '1.1rem',
-    textAlign: 'left',
+    fontSize: '1rem',
+    textAlign: 'justify',
     letterSpacing: '0.2px',
-    wordBreak: 'break-all',
   },
 
   coinSubTitle: {
     fontWeight: '700',
-    fontSize: '1.8rem',
+    fontSize: '1.5rem',
   },
 
   coinSubTitleValue: {
-    fontSize: '1.375rem',
+    fontSize: '1rem',
+  },
+
+  addToWatchListBtnBox: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '32px',
+  },
+
+  addToWatchListBtn: {
+    width: '50%',
+    fontWeight: '700',
+    padding: '8px 0',
+    outline: 'none',
   },
 };
