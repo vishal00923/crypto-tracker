@@ -38,7 +38,7 @@ export default function Chart() {
   return (
     <Box sx={sxStyles.container}>
       {previousData.length === 0 ? (
-        <CircularProgress sx={{ color: '#EEBC1D' }} size={250} thickness={2} />
+        <CircularProgress sx={{ color: '#EEBC1D' }} size={250} thickness={1} />
       ) : (
         <>
           <Line

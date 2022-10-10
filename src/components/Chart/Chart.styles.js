@@ -2,7 +2,7 @@ import { styled, Button } from '@mui/material';
 
 export const sxStyles = {
   container: {
-    width: '75%',
+    width: '70%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
