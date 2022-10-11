@@ -1,28 +1,34 @@
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
+  signOut,
+  signInWithPopup,
+  onAuthStateChanged,
+  GoogleAuthProvider,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut,
-  GoogleAuthProvider,
-  signInWithPopup,
 } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  onSnapshot,
+} from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyB-QtLHMGNG_ZFNltA46paUO3OhCc42_Ic',
-  authDomain: 'crypto-tracker-4dbf0.firebaseapp.com',
-  projectId: 'crypto-tracker-4dbf0',
-  storageBucket: 'crypto-tracker-4dbf0.appspot.com',
-  messagingSenderId: '66820886492',
-  appId: '1:66820886492:web:e51f2225b2b4a5b858c919',
-  measurementId: 'G-VFW3EGLXVK',
+  apiKey: 'AIzaSyDFWeYpyv7LRYnsegCaMJiu3ohyLlyKDKo',
+  authDomain: 'crypto-tracker-a9e45.firebaseapp.com',
+  projectId: 'crypto-tracker-a9e45',
+  storageBucket: 'crypto-tracker-a9e45.appspot.com',
+  messagingSenderId: '1005594127774',
+  appId: '1:1005594127774:web:e4e2a64c5d05429ddbba8f',
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
 
 const auth = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp);
 
 const createUser = async (email, password) => {
   return await createUserWithEmailAndPassword(auth, email, password);
@@ -47,8 +53,6 @@ const signInWithGoogle = async () => {
   return await signInWithPopup(auth, googleProvider);
 };
 
-const db = getFirestore(firebaseApp);
-
 const createUserDocument = async (userAuth, additionalInformation = {}) => {
   if (!userAuth) return;
 
@@ -62,24 +66,33 @@ const createUserDocument = async (userAuth, additionalInformation = {}) => {
 
     try {
       await setDoc(userDocRef, {
-        displayName,
         email,
         createdAt,
+        displayName,
         ...additionalInformation,
       });
-    } catch (error) {
-      console.error('error creating user: ', error.message);
+    } catch (e) {
+      console.error('error creating user: ', e.message);
     }
   }
 
   return userDocRef;
 };
 
+const createCoinDocumentListener = async (userAuth, callback) => {
+  const coinDocRef = doc(db, 'watchlist', userAuth.uid);
+  return onSnapshot(coinDocRef, callback);
+};
+
 export {
+  db,
+  doc,
+  setDoc,
   signInUser,
   createUser,
   signOutUser,
   signInWithGoogle,
   createUserDocument,
   onAuthStateChangedListener,
+  createCoinDocumentListener,
 };

@@ -25,15 +25,11 @@ const currencyTable = {
   USD: '$',
   EUR: '€',
   GBP: '£',
-  JPY: '¥',
-  CHF: 'CHF',
-  CNY: '¥',
   INR: '₹',
+  JPY: '¥',
   KRW: '₩',
   RUB: '₽',
-  SEK: 'kr',
   TRY: '₺',
-  ZAR: 'R',
 };
 
 export { numberWithCommas, chartDetails, currencyTable };
