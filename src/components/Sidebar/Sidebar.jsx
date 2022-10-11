@@ -1,16 +1,20 @@
 import { useState, useContext } from 'react';
 import { UserContext } from '../../contexts/userContext';
+import { CoinsContext } from '../../contexts/coinsContext';
+import { CurrencyContext } from '../../contexts/currencyContext';
 
 import { Avatar, Box, Button, Drawer, Typography } from '@mui/material';
+import { AiFillDelete } from 'react-icons/ai';
 import { sxStyles } from './Sidebar.styles';
 
-import { signOutUser } from '../../utils/firebase';
-import { CoinsContext } from '../../contexts/coinsContext';
+import { numberWithCommas } from '../../utils/helper';
+import { signOutUser, doc, db, setDoc } from '../../utils/firebase';
 
 export default function Sidebar() {
   const [drawerState, setDrawerState] = useState(false);
 
   const { coins } = useContext(CoinsContext);
+  const { currencySymbol } = useContext(CurrencyContext);
   const { currentUser, setCurrentUser, setNotifications, watchlist } =
     useContext(UserContext);
 
@@ -25,8 +29,6 @@ export default function Sidebar() {
     setDrawerState(open);
   };
 
-  console.log(watchlist, coins);
-
   const handleLogout = () => {
     signOutUser();
     setCurrentUser(null);
@@ -35,6 +37,32 @@ export default function Sidebar() {
       type: 'success',
       message: 'You have been logged out',
     });
+  };
+
+  const handleRemoveFromWatchlist = async (id, name) => {
+    const coinDocRef = doc(db, 'watchlist', currentUser.uid);
+
+    try {
+      await setDoc(
+        coinDocRef,
+        {
+          coins: watchlist.filter((coinId) => coinId !== id),
+        },
+        { marge: true }
+      );
+
+      setNotifications({
+        open: true,
+        type: 'success',
+        message: `${name} removed from Watchlist`,
+      });
+    } catch (e) {
+      setNotifications({
+        open: true,
+        type: 'error',
+        message: e.message,
+      });
+    }
   };
 
   return (
@@ -63,7 +91,7 @@ export default function Sidebar() {
             </Typography>
           </Box>
 
-          <Box sx={sxStyles.sidebarBox2}>
+          <>
             <Typography
               sx={sxStyles.sidebarBox2SubTitle}
               variant="body2"
@@ -72,40 +100,46 @@ export default function Sidebar() {
               watchlist
             </Typography>
 
-            <Box sx={{ marginTop: '16px', width: '100%', overflow: 'scroll' }}>
+            <Box sx={sxStyles.sidebarWatchlist}>
               {coins.map((coin) => {
-                const { id, name, image } = coin;
+                const { id, name, image, current_price } = coin;
                 const isCoinInWatchlist = watchlist.includes(id);
 
                 return (
                   isCoinInWatchlist && (
-                    <Box
-                      key={id}
-                      sx={{
-                        display: 'flex',
-                        gap: '8px',
-                        backgroundColor: '#fff',
-                        marginBottom: '12px',
-                        padding: '24px 64px',
-                        height: '20%',
-                      }}
-                      display="flex"
-                      alignItems="center"
-                    >
+                    <Box key={id} sx={sxStyles.sidebarWatchlistItem}>
                       <Avatar src={image} alt={name} />
                       <Typography
                         sx={{ color: '#000' }}
                         variant="body1"
-                        component="p"
+                        component="span"
                       >
                         {name}
                       </Typography>
+
+                      <Box>
+                        <Typography
+                          sx={{ color: '#000' }}
+                          variant="body1"
+                          component="span"
+                        >
+                          {currencySymbol +
+                            ' ' +
+                            numberWithCommas(current_price)}
+                        </Typography>
+                      </Box>
+
+                      <AiFillDelete
+                        onClick={() => handleRemoveFromWatchlist(id, name)}
+                        style={{ color: '#000', cursor: 'pointer' }}
+                        fontSize="1.325rem"
+                      />
                     </Box>
                   )
                 );
               })}
             </Box>
-          </Box>
+          </>
 
           <Button onClick={handleLogout} sx={sxStyles.logoutBtn}>
             log out

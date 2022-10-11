@@ -1,16 +1,14 @@
 export const sxStyles = {
   sidebar: {
-    width: '100%',
-    height: '100vh',
+    width: '520px',
+    height: '100%',
+    padding: '32px',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    padding: '8px  112px',
     backgroundColor: '#1b1a22',
   },
 
   sidebarBox1: {
-    padding: '32px 16px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -18,32 +16,51 @@ export const sxStyles = {
   },
 
   sidebarBox1Avatar: {
-    width: 232,
-    height: 'auto',
+    width: '190px',
+    height: '190px',
+    objectFit: 'contain',
   },
 
   sidebarBox1Name: {
     fontWeight: '700',
-    fontSize: '1.925rem',
-  },
-
-  sidebarBox2: {
-    height: '55%',
+    textAlign: 'center',
+    fontSize: '1.725rem',
+    marginBottom: '16px',
   },
 
   sidebarBox2SubTitle: {
+    textAlign: 'center',
+    fontWeight: '700',
+    fontSize: '1.125rem',
     textTransform: 'uppercase',
     textDecoration: 'underline',
-    fontWeight: '700',
+  },
+
+  sidebarWatchlist: {
+    marginTop: '16px',
+    width: '100%',
+    height: '60%',
+    overflowY: 'scroll',
+    marginBottom: '20px',
+  },
+
+  sidebarWatchlistItem: {
+    backgroundColor: '#fff',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: '12px',
+    padding: '8px 16px',
+    marginBottom: '10px',
   },
 
   logoutBtn: {
-    width: '50%',
-    fontWeight: '700',
     color: '#000',
-    backgroundColor: '#EEBC1D',
-    padding: '8px 0',
+    width: '100%',
     outline: 'none',
+    padding: '8px 0',
+    fontWeight: '700',
+    backgroundColor: '#EEBC1D',
     '&:hover': {
       backgroundColor: '#EEBC1D',
     },
