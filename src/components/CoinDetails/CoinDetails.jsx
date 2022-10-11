@@ -38,7 +38,7 @@ export default function CoinDetails() {
       setNotifications({
         open: true,
         type: 'success',
-        message: `${name} added to watchlist`,
+        message: `${name} added to Watchlist`,
       });
     } catch (e) {
       setNotifications({
@@ -64,7 +64,7 @@ export default function CoinDetails() {
       setNotifications({
         open: true,
         type: 'success',
-        message: `${name} removed from watchlist`,
+        message: `${name} removed from Watchlist`,
       });
     } catch (e) {
       setNotifications({

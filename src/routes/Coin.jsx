@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { CoinContext } from '../contexts/coinContext';
+
 import { useParams } from 'react-router-dom';
 
 import axios from 'axios';
@@ -29,7 +30,7 @@ export default function Coin() {
   }, [id, setCoin]);
 
   if (!loading) {
-    return <LinearProgress sx={{ backgroundColor: '#EEBC1D', height: 8 }} />;
+    return <LinearProgress sx={{ backgroundColor: '#EEBC1D', height: 4 }} />;
   }
 
   return (
@@ -37,8 +38,8 @@ export default function Coin() {
       sx={{
         display: 'flex',
         justifyContent: 'space-between',
-        backgroundColor: '#1B1A22',
         height: '92vh',
+        padding: '32px 0',
       }}
     >
       <CoinDetails />
