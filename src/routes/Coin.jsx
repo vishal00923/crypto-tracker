@@ -37,6 +37,13 @@ export default function Coin() {
     <Box
       sx={{
         display: 'flex',
+        flexDirection: {
+          xs: 'column',
+          sm: 'column',
+          md: 'column',
+          lg: 'row',
+          xl: 'row',
+        },
         justifyContent: 'space-between',
         height: '92vh',
         padding: '32px 0',

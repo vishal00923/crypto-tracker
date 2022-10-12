@@ -6,6 +6,13 @@ export const sxStyles = {
   },
 
   title: {
+    fontSize: {
+      xs: '1.375rem',
+      sm: '1.575',
+      md: '1.975rem',
+      lg: '2.2rem',
+      xl: '2.375rem',
+    },
     textAlign: 'center',
   },
 

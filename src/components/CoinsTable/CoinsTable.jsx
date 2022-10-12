@@ -13,6 +13,7 @@ import {
   TableBody,
   Pagination,
   LinearProgress,
+  Avatar,
 } from '@mui/material';
 
 import { CoinsContext } from '../../contexts/coinsContext';
@@ -90,7 +91,20 @@ export default function CoinsTable() {
                     <TableCell
                       key={header}
                       align="center"
-                      sx={{ color: '#000', fontWeight: '700' }}
+                      sx={{
+                        color: '#000',
+                        fontWeight: '700',
+                        paddingTop: {
+                          xs: '6px',
+                          sm: '12px',
+                          md: '20px',
+                        },
+                        paddingBottom: {
+                          xs: '6px',
+                          sm: '12px',
+                          md: '20px',
+                        },
+                      }}
                     >
                       {header}
                     </TableCell>
@@ -129,7 +143,20 @@ export default function CoinsTable() {
                           gap: '20px',
                         }}
                       >
-                        <img style={{ height: 50 }} src={image} alt={name} />
+                        <Avatar
+                          sx={{
+                            width: {
+                              xs: 50,
+                              sm: 52,
+                            },
+                            height: {
+                              xs: 50,
+                              sm: 52,
+                            },
+                          }}
+                          src={image}
+                          alt={name}
+                        />
                         <Box
                           sx={{
                             display: 'flex',
@@ -138,14 +165,31 @@ export default function CoinsTable() {
                           }}
                         >
                           <Typography
-                            sx={{ fontSize: '1.375rem' }}
+                            sx={{
+                              fontSize: {
+                                xs: '.925rem',
+                                sm: '1rem',
+                                md: '1.125rem',
+                                lg: '1.25rem',
+                                xl: '1.375rem',
+                              },
+                            }}
                             variant="h6"
                             component="p"
                           >
                             {symbol.toUpperCase()}
                           </Typography>
                           <Typography
-                            sx={{ fontSize: '1rem', opacity: 0.7 }}
+                            sx={{
+                              fontSize: {
+                                xs: '.825rem',
+                                sm: '.925rem',
+                                md: '1rem',
+                                lg: '1.125rem',
+                                xl: '1.25rem',
+                              },
+                              opacity: 0.7,
+                            }}
                             variant="h6"
                             component="p"
                           >
@@ -156,7 +200,15 @@ export default function CoinsTable() {
 
                       <TableCell align="center">
                         <Typography
-                          sx={{ fontSize: '1rem' }}
+                          sx={{
+                            fontSize: {
+                              xs: '.825rem',
+                              sm: '.925rem',
+                              md: '1rem',
+                              lg: '1.125rem',
+                              xl: '1.25rem',
+                            },
+                          }}
                           variant="h6"
                           component="p"
                         >
@@ -170,7 +222,13 @@ export default function CoinsTable() {
                         <Typography
                           sx={{
                             color: profit ? '#00FF00' : '#FF0000',
-                            fontSize: '1rem',
+                            fontSize: {
+                              xs: '.825rem',
+                              sm: '.925rem',
+                              md: '1rem',
+                              lg: '1.125rem',
+                              xl: '1.25rem',
+                            },
                           }}
                           variant="h6"
                           component="p"
@@ -182,7 +240,15 @@ export default function CoinsTable() {
 
                       <TableCell align="center">
                         <Typography
-                          sx={{ fontSize: '1rem' }}
+                          sx={{
+                            fontSize: {
+                              xs: '.825rem',
+                              sm: '.925rem',
+                              md: '1rem',
+                              lg: '1.125rem',
+                              xl: '1.25rem',
+                            },
+                          }}
                           variant="h6"
                           component="p"
                         >

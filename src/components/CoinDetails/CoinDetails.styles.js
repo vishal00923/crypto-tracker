@@ -4,11 +4,23 @@ export const sxStyles = {
     flexDirection: 'column',
     gap: '32px',
     color: '#fff',
-    width: '40%',
+    width: {
+      xs: '100%',
+      sm: '100%',
+      md: '100%',
+      lg: '40%',
+      xl: '40%',
+    },
     paddingLeft: '16px',
     paddingRight: '24px',
     marginTop: '48px',
-    borderRight: '2px solid gray',
+    borderRight: {
+      xs: 'none',
+      sm: 'none',
+      md: 'none',
+      lg: '2px solid gray',
+      xl: '2px solid gray',
+    },
   },
 
   box1: {
@@ -45,7 +57,11 @@ export const sxStyles = {
 
   coinSubTitle: {
     fontWeight: '700',
-    fontSize: '1.5rem',
+    fontSize: {
+      xs: '1.3rem',
+      sm: '1.3rem',
+      md: '1.4rem',
+    },
   },
 
   coinSubTitleValue: {
@@ -59,9 +75,13 @@ export const sxStyles = {
   },
 
   addToWatchListBtn: {
-    width: '50%',
+    width: { xs: '80%', sm: '60%', md: '50%' },
     fontWeight: '700',
-    padding: '8px 0',
+    padding: {
+      md: '8px 4px',
+      lg: '8px 4px',
+      xl: '8px 4px',
+    },
     outline: 'none',
   },
 };

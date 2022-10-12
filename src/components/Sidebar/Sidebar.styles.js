@@ -1,6 +1,12 @@
 export const sxStyles = {
   sidebar: {
-    width: '520px',
+    width: {
+      xs: '350px',
+      sm: '450px',
+      md: '550px',
+      lg: '550px',
+      xl: '700px',
+    },
     height: '100%',
     padding: '32px',
     display: 'flex',
@@ -16,30 +22,50 @@ export const sxStyles = {
   },
 
   sidebarBox1Avatar: {
-    width: '190px',
-    height: '190px',
+    width: {
+      xs: '80px',
+      sm: '120px',
+      md: '150px',
+      lg: '180px',
+    },
+    height: {
+      xs: '80px',
+      sm: '120px',
+      md: '150px',
+      lg: '180px',
+    },
     objectFit: 'contain',
   },
 
   sidebarBox1Name: {
     fontWeight: '700',
     textAlign: 'center',
-    fontSize: '1.725rem',
+    fontSize: {
+      xs: '1.425rem',
+      sm: '1.625rem',
+      md: '2.25rem',
+      lg: '2.25rem',
+      xl: '2.25rem',
+    },
     marginBottom: '16px',
   },
 
   sidebarBox2SubTitle: {
     textAlign: 'center',
     fontWeight: '700',
-    fontSize: '1.125rem',
+    fontSize: {
+      xs: '.925rem',
+      sm: '1rem',
+      md: '1.25rem',
+      lg: '1.25rem',
+    },
     textTransform: 'uppercase',
     textDecoration: 'underline',
   },
 
   sidebarWatchlist: {
     marginTop: '16px',
-    width: '100%',
-    height: '60%',
+    height: { xs: '100%' },
     overflowY: 'scroll',
     marginBottom: '20px',
   },
@@ -49,8 +75,7 @@ export const sxStyles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    gap: '12px',
-    padding: '8px 16px',
+    padding: { xs: '4px 6px', sm: '8px 12px' },
     marginBottom: '10px',
   },
 

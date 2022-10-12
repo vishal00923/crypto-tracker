@@ -2,7 +2,13 @@ import { styled, Button } from '@mui/material';
 
 export const sxStyles = {
   container: {
-    width: '70%',
+    width: {
+      xs: '100%',
+      sm: '100%',
+      md: '100%',
+      lg: '70%',
+      xl: '70%',
+    },
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -24,7 +30,6 @@ export const StyledButton = styled(Button)({
   textAlign: 'center',
   outline: 'none',
   width: '23.5%',
-  padding: '8px 2px',
   border: '2px solid #eebc1d',
   '&:hover': {
     fontWeight: '700',

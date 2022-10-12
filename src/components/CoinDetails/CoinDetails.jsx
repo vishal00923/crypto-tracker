@@ -4,7 +4,7 @@ import { UserContext } from '../../contexts/userContext';
 import { CurrencyContext } from '../../contexts/currencyContext';
 
 import { Box } from '@mui/system';
-import { Button, Typography } from '@mui/material';
+import { Avatar, Button, Typography } from '@mui/material';
 
 import ReactHtmlParser from 'react-html-parser';
 import { numberWithCommas } from '../../utils/helper';
@@ -78,12 +78,37 @@ export default function CoinDetails() {
   return (
     <Box sx={sxStyles.containerBox}>
       <Box sx={sxStyles.box1}>
-        <img
-          style={{ marginBottom: '20px', height: '200px' }}
+        <Avatar
+          sx={{
+            marginBottom: '20px',
+            width: {
+              xs: 150,
+              sm: 155,
+              md: 160,
+            },
+            height: {
+              xs: 150,
+              sm: 155,
+              md: 160,
+            },
+          }}
           src={image?.large}
           alt={name}
         />
-        <Typography sx={{ fontWeight: '700' }} variant="h3" component="h2">
+        <Typography
+          sx={{
+            fontWeight: '700',
+            fontSize: {
+              xs: '2rem',
+              sm: '2rem',
+              md: '2.25rem',
+              lg: '2.5rem',
+              xl: '2.75rem',
+            },
+          }}
+          variant="h3"
+          component="h2"
+        >
           {name}
         </Typography>
       </Box>

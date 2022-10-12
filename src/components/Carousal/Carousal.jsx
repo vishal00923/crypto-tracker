@@ -3,7 +3,7 @@ import { CurrencyContext } from '../../contexts/currencyContext';
 import { Link } from 'react-router-dom';
 
 import { Box } from '@mui/system';
-import { Typography } from '@mui/material';
+import { Avatar, Typography } from '@mui/material';
 
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
@@ -52,7 +52,26 @@ export default function Carousal() {
           alignItems: 'center',
         }}
       >
-        <img style={{ height: 80 }} src={image} alt={name} />
+        <Avatar
+          sx={{
+            width: {
+              xs: 50,
+              sm: 60,
+              md: 70,
+              lg: 80,
+              xl: 80,
+            },
+            height: {
+              xs: 50,
+              sm: 60,
+              md: 70,
+              lg: 80,
+              xl: 80,
+            },
+          }}
+          src={image}
+          alt={name}
+        />
         <Box sx={sxStyles.coinDetailsBox}>
           <Typography sx={{ fontSize: '.9rem' }} variant="h6" component="span">
             {symbol.toUpperCase()}
