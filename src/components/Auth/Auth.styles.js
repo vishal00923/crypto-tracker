@@ -2,9 +2,19 @@ export const sxStyles = {
   button: {
     fontWeight: '700',
     color: '#000',
-    minWidth: 100,
+    width: {
+      xs: 90,
+      sm: 90,
+      md: 120,
+      lg: 120,
+      xl: 120,
+    },
     backgroundColor: '#EEBC1D',
-    padding: '8px 0',
+    padding: {
+      xs: 0.4,
+      sm: 0.6,
+      md: 1,
+    },
     outline: 'none',
     '&:hover': {
       backgroundColor: '#EEBC1D',
@@ -18,7 +28,13 @@ export const sxStyles = {
   },
 
   paper: {
-    minWidth: '520px',
+    width: {
+      xs: '350px',
+      sm: '450px',
+      md: '500px',
+      lg: '520px',
+      xl: '550px',
+    },
     backgroundColor: '#1b1a22',
     borderRadius: '4px',
   },

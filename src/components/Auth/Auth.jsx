@@ -71,7 +71,7 @@ export default function Auth() {
         sx={sxStyles.modal}
       >
         <Fade in={modalStatus}>
-          <Paper style={sxStyles.paper}>
+          <Paper sx={sxStyles.paper}>
             <AppBar position="static" sx={{ background: 'transparent' }}>
               <Tabs
                 onChange={handleTabChange}
