@@ -12,6 +12,13 @@ export const sxStyles = {
 
   logo: {
     color: '#FFD700',
+    fontSize: {
+      xs: '1rem',
+      sm: '1.1rem',
+      md: '1.2rem',
+      lg: '1.3rem',
+      xl: '1.4rem',
+    },
     fontWeight: '900',
     cursor: 'pointer',
   },
@@ -24,6 +31,12 @@ export const sxStyles = {
   },
 
   formControl: {
-    minWidth: 120,
+    width: {
+      xs: 90,
+      sm: 100,
+      md: 120,
+      lg: 120,
+      xl: 132,
+    },
   },
 };
