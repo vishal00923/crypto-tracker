@@ -4,7 +4,7 @@ import { CoinsContext } from '../../contexts/coinsContext';
 import { CurrencyContext } from '../../contexts/currencyContext';
 
 import { Avatar, Box, Button, Drawer, Typography } from '@mui/material';
-import { AiFillDelete } from 'react-icons/ai';
+import { AiFillDelete, AiOutlineClose } from 'react-icons/ai';
 import { sxStyles } from './Sidebar.styles';
 
 import { numberWithCommas } from '../../utils/helper';
@@ -73,7 +73,22 @@ export default function Sidebar() {
         src={photoURL}
         alt={displayName || email}
       />
-      <Drawer onClose={toggleDrawer(false)} anchor="right" open={drawerState}>
+      <Drawer
+        onClose={toggleDrawer(false)}
+        sx={{ position: 'relative' }}
+        anchor="right"
+        open={drawerState}
+      >
+        <AiOutlineClose
+          onClick={toggleDrawer(false)}
+          style={{
+            position: 'absolute',
+            cursor: 'pointer',
+            fontSize: '1.3rem',
+            top: 50,
+            right: 50,
+          }}
+        />
         <Box sx={sxStyles.sidebar}>
           <Box sx={sxStyles.sidebarBox1}>
             <Avatar
@@ -131,8 +146,11 @@ export default function Sidebar() {
 
                       <AiFillDelete
                         onClick={() => handleRemoveFromWatchlist(id, name)}
-                        style={{ color: '#000', cursor: 'pointer' }}
-                        fontSize="1.325rem"
+                        style={{
+                          color: '#000',
+                          cursor: 'pointer',
+                          fontSize: '1.325rem',
+                        }}
                       />
                     </Box>
                   )
