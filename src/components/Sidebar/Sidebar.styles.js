@@ -1,11 +1,11 @@
 export const sxStyles = {
   sidebar: {
     width: {
-      xs: '350px',
-      sm: '450px',
-      md: '550px',
-      lg: '550px',
-      xl: '700px',
+      xs: '320px',
+      sm: '380px',
+      md: '440px',
+      lg: '500px',
+      xl: '580px',
     },
     height: '100%',
     padding: '32px',
