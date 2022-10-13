@@ -12,11 +12,11 @@ export default function Banner() {
         backgroundImage: `url(./banner.jpg)`,
         width: '100%',
         height: {
-          xs: '45vh',
-          sm: '48vh',
-          md: '52vh',
-          lg: '55vh',
-          xl: '58vh',
+          xs: '60vh',
+          sm: '52vh',
+          md: '80vh',
+          lg: '70vh',
+          xl: '55vh',
         },
         objectFit: 'cover',
       }}
@@ -32,10 +32,10 @@ export default function Banner() {
         <Container
           sx={{
             marginTop: {
-              xs: '20%',
-              sm: '20%',
-              md: '15%',
-              lg: '10%',
+              xs: '25%',
+              sm: '15%',
+              md: '10%',
+              lg: '5%',
               xl: '5%',
             },
           }}

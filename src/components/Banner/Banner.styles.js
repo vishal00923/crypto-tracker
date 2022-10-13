@@ -1,14 +1,11 @@
 export const sxStyles = {
   box: {
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
+    flexDirection: 'column',
     paddingTop: {
-      xs: '52px',
-      sm: '52px',
-      md: '48px',
-      lg: '32px',
-      xl: '32px',
+      xs: '80px',
+      sm: '70px',
     },
   },
 
@@ -27,8 +24,9 @@ export const sxStyles = {
   },
 
   description: {
-    fontFamily: 'Montserrat',
     color: '#fff',
     opacity: '0.6',
+    fontFamily: 'Montserrat',
+    textAlign: { xs: 'center' },
   },
 };
