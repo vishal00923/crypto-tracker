@@ -123,7 +123,20 @@ export default function Sidebar() {
                 return (
                   isCoinInWatchlist && (
                     <Box key={id} sx={sxStyles.sidebarWatchlistItem}>
-                      <Avatar src={image} alt={name} />
+                      <Avatar
+                        sx={{
+                          width: {
+                            xs: '28px',
+                            sm: '48px',
+                          },
+                          height: {
+                            xs: '28px',
+                            sm: '48px',
+                          },
+                        }}
+                        src={image}
+                        alt={name}
+                      />
                       <Typography
                         sx={{ color: '#000' }}
                         variant="body1"
