@@ -29,7 +29,7 @@ export const sxStyles = {
 export const StyledButton = styled(Button)({
   textAlign: 'center',
   outline: 'none',
-  width: '23.5%',
+  marginRight: '12px',
   border: '2px solid #eebc1d',
   '&:hover': {
     fontWeight: '700',

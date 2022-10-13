@@ -78,6 +78,12 @@ export default function Chart() {
                     fontWeight: selected && '700',
                     color: selected && '#000',
                     backgroundColor: selected && '#eebc1d',
+                    fontSize: '.8rem',
+                    width: {
+                      xs: '15%',
+                      sm: '20%',
+                      lg: '25%',
+                    },
                   }}
                 >
                   {label}

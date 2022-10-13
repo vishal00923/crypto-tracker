@@ -4,32 +4,28 @@ function numberWithCommas(x) {
 
 const chartDetails = [
   {
-    label: '1 Day',
+    label: '24 Hours',
     value: 1,
   },
   {
-    label: '30 Days',
+    label: '1 Month',
     value: 30,
   },
   {
-    label: '90 Days',
+    label: '3 Months',
     value: 90,
   },
   {
-    label: '365 Days',
+    label: '1 Year',
     value: 365,
   },
 ];
 
 const currencyTable = {
   USD: '$',
+  INR: '₹',
   EUR: '€',
   GBP: '£',
-  INR: '₹',
-  JPY: '¥',
-  KRW: '₩',
-  RUB: '₽',
-  TRY: '₺',
 };
 
 export { numberWithCommas, chartDetails, currencyTable };
