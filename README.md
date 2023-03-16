@@ -1,19 +1,27 @@
-# Getting Started with Create React App
+## Crypto Tracker App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> Features :-
 
-## Crypto Tracker
+1. **This web app tracks all the cryptocurrencies and shows information related to that cryptocurrency such as Price, Market Cap etc.**
+2. **This web app has a watchlist feature where users can add their favourite crypto into their watchlists.**
+3. **This web app has Authentication feature Email Auth, Google Login.**
 
-<img src="app-preview.png" width="60%" height="60%" />
+> This web app is made using :-
 
-## Try It
+1. **React**
+2. **Material UI**
+3. **Firebase**
+4. **CoinGecko API**
 
-https://crypto-tracker-vishal00923.netlify.app/
+> Output :-
 
-## Install
+<img src="https://iili.io/HXPWx87.png" alt="Screenshot 2023 03 16 121212" border="0">
 
-### `npm install`
+> Try It :- <br />
 
-## Usage
+https://crypto-tracker-a9e45.web.app/
 
-### `npm start`
+> Run Locally :- <br />
+
+1. **npm install**
+2. **npm start**
